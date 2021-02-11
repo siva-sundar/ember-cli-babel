@@ -48,6 +48,7 @@ module.exports = class Babel extends Filter {
     if (this.options.helperWhiteList) {
       this.helperWhiteList = this.options.helperWhiteList;
     }
+    options.babel = options.babel || {};
 
     let { isParallelizable, errors } = transformIsParallelizable(options.babel);
 
@@ -86,6 +87,7 @@ module.exports = class Babel extends Filter {
   }
 
   processString(string, relativePath) {
+  
     heimdall.statsFor('babel').stringsProcessed++;
 
     let options = this.copyOptions();
